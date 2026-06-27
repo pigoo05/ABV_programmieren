@@ -120,6 +120,34 @@ http://localhost:8501
 4. Buchung speichern
 5. Gespeicherte Buchungen, GuV-Auswertung und Mini-Dashboard ansehen
 
+## Beispiel zum Testen
+
+Zum Testen der Anwendung koennen zum Beispiel folgende Buchungen eingetragen werden:
+
+### Beispiel 1: Einnahme
+
+- Datum: 2026-06-27
+- Betrag: 120.50
+- Kategorie: Umsatz
+- Buchungstyp: Einnahme
+- Beschreibung: Testbuchung Einnahme
+
+### Beispiel 2: Ausgabe
+
+- Datum: 2026-06-27
+- Betrag: 50.00
+- Kategorie: Miete
+- Buchungstyp: Ausgabe
+- Beschreibung: Testbuchung Ausgabe
+
+Nach dem Speichern dieser beiden Buchungen zeigt die GuV-Auswertung:
+
+- Einnahmen: 120.50 EUR
+- Ausgaben: 50.00 EUR
+- Gewinn: 70.50 EUR
+
+Die SQLite-Datenbank wird beim Start der Anwendung automatisch angelegt. Deshalb muessen keine Beispieldaten im Repository mitgeliefert werden.
+
 ## KI-Nutzung
 
 KI wurde unterstuetzend eingesetzt. Genauere Informationen stehen in der Datei `AI_USAGE.md`.

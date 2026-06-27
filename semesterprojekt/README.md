@@ -1,3 +1,8 @@
+# Gruppenmitglieder
+
+- Oskar Pit Pigola (Matrikelnummer: 5587852)
+
+
 # Einfaches Buchungssystem
 
 Dieses Projekt ist ein Semesterprojekt im Modul **ABV Programmieren fuer Wirtschaftswissenschaftlerinnen und Wirtschaftswissenschaftler**.

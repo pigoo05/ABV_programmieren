@@ -56,8 +56,19 @@ else:
 
 
 st.header("GuV-Auswertung")
-# GuV-Auswertung vom Backend laden
-antwort_guv = requests.get(API_URL + "/auswertung/guv")
+
+st.write("Bitte einen Zeitraum fuer die GuV-Auswertung auswaehlen.")
+
+startdatum = st.date_input("Startdatum fuer GuV")
+enddatum = st.date_input("Enddatum fuer GuV")
+
+parameter = {
+    "startdatum": str(startdatum),
+    "enddatum": str(enddatum)
+}
+
+# GuV-Auswertung vom Backend fuer den gewaehlten Zeitraum laden
+antwort_guv = requests.get(API_URL + "/auswertung/guv", params=parameter)
 
 if antwort_guv.status_code == 200:
     guv = antwort_guv.json()

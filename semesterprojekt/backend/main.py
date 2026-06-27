@@ -64,10 +64,10 @@ def buchungen_anzeigen():
 
     return buchungen
 
-# GuV-Auswertung zurueckgeben
+# GuV-Auswertung fuer einen Zeitraum zurueckgeben
 @app.get("/auswertung/guv")
-def guv_anzeigen():
-    return berechne_guv()
+def guv_anzeigen(startdatum: str = None, enddatum: str = None):
+    return berechne_guv(startdatum, enddatum)
 
 # Ausgaben nach Kategorien auswerten
 @app.get("/auswertung/kategorien")

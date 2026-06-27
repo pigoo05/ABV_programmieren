@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from backend.database import create_table, get_connection
 from backend.schemas import Buchung
 from backend.analysis import berechne_guv, ausgaben_nach_kategorie
-
+# FastAPI erstellt
 app = FastAPI()
 
 
@@ -14,7 +14,7 @@ def beim_start():
 @app.get("/")
 def startseite():
     return {"message": "Backend laeuft"}
-
+# neue Buchung in der Datenbank speichern
 
 @app.post("/buchungen")
 def buchung_speichern(buchung: Buchung):
@@ -40,7 +40,7 @@ def buchung_speichern(buchung: Buchung):
 
     return {"message": "Buchung wurde gespeichert"}
 
-
+# Alle gespeicherten Buchungen aus der Datenbank laden
 @app.get("/buchungen")
 def buchungen_anzeigen():
     connection = get_connection()
@@ -64,12 +64,12 @@ def buchungen_anzeigen():
 
     return buchungen
 
-
+# GuV-Auswertung zurueckgeben
 @app.get("/auswertung/guv")
 def guv_anzeigen():
     return berechne_guv()
 
-
+# Ausgaben nach Kategorien auswerten
 @app.get("/auswertung/kategorien")
 def kategorien_anzeigen():
     return ausgaben_nach_kategorie()

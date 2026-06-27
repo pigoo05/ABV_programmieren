@@ -1,7 +1,7 @@
 import pandas as pd
 from backend.database import get_connection
 
-
+# Einnahmen, Ausgaben und Gewinn berechnen
 def berechne_guv():
     connection = get_connection()
     df = pd.read_sql_query("SELECT * FROM buchungen", connection)
@@ -24,7 +24,7 @@ def berechne_guv():
         "gewinn": round(gewinn, 2)
     }
 
-
+# Ausgaben nach Kategorien gruppieren
 def ausgaben_nach_kategorie():
     connection = get_connection()
     df = pd.read_sql_query("SELECT * FROM buchungen", connection)

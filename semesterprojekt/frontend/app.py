@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
-
+# Adresse des FastAPI-Backends
 API_URL = "http://127.0.0.1:8000"
 
 st.title("Einfaches Buchungssystem")
@@ -16,7 +16,7 @@ betrag = st.number_input("Betrag", min_value=0.0, step=1.0)
 kategorie = st.text_input("Kategorie")
 typ = st.selectbox("Buchungstyp", ["Einnahme", "Ausgabe"])
 beschreibung = st.text_input("Beschreibung")
-
+# Neue Buchung an das Backend senden
 if st.button("Buchung speichern"):
     if betrag <= 0:
         st.error("Der Betrag muss groesser als 0 sein.")
@@ -40,7 +40,7 @@ if st.button("Buchung speichern"):
             st.error("Fehler beim Speichern der Buchung.")
 
 st.header("Gespeicherte Buchungen")
-
+# Gespeicherte Buchungen vom Backend laden
 antwort = requests.get(API_URL + "/buchungen")
 
 if antwort.status_code == 200:
@@ -56,7 +56,7 @@ else:
 
 
 st.header("GuV-Auswertung")
-
+# GuV-Auswertung vom Backend laden
 antwort_guv = requests.get(API_URL + "/auswertung/guv")
 
 if antwort_guv.status_code == 200:

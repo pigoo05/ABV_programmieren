@@ -18,7 +18,7 @@ Die Anwendung ist ein einfaches Buchungssystem. Nutzer koennen Einnahmen und Aus
 - GuV-Auswertung visualisieren
 - Mini-Dashboard mit Auswertung der Ausgaben nach Kategorien
 
-## Technologien
+## Pakete und Programme
 
 - Python
 - FastAPI
@@ -28,6 +28,7 @@ Die Anwendung ist ein einfaches Buchungssystem. Nutzer koennen Einnahmen und Aus
 - Pandas
 - Matplotlib
 - Requests
+- uv
 
 ## Projektstruktur
 
@@ -70,6 +71,26 @@ Eine Buchung besteht aus folgenden Feldern:
 
 Die Daten werden ueber ein Pydantic-Modell validiert, bevor sie gespeichert werden.
 
+## Kategorien
+
+Die Kategorien koennen beim Erfassen einer Buchung frei eingegeben werden. Fuer das Testen der Anwendung bieten sich zum Beispiel folgende Kategorien an:
+
+### Einnahmen
+
+- Umsatz
+- Dienstleistung
+- Sonstige Einnahmen
+
+### Ausgaben
+
+- Miete
+- Material
+- Software
+- Personal
+- Sonstige Ausgaben
+
+Die Kategorien werden fuer das Mini-Dashboard verwendet. Dort werden die Ausgaben nach Kategorien gruppiert und ausgewertet.
+
 ## GuV-Auswertung
 
 Die Anwendung berechnet eine einfache GuV-Auswertung:
@@ -86,7 +107,11 @@ Dadurch kann erkannt werden, welche Kostenbereiche besonders relevant sind. Die 
 
 ## Lokaler Start
 
-Das Projekt wird mit zwei Terminalfenstern gestartet.
+Vor dem Start muessen Python und uv installiert sein. Ausserdem muessen die benoetigten Pakete aus der `pyproject.toml` installiert werden.
+
+Falls uv noch nicht installiert ist, muss uv zuerst installiert werden. Je nach Betriebssystem kann die Installation unterschiedlich erfolgen.
+
+Anschliessend wird das Projekt mit zwei Terminalfenstern gestartet.
 
 ### 1. Backend starten
 

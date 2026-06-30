@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+
 # Adresse des FastAPI-Backends
 API_URL = "http://127.0.0.1:8000"
 
@@ -11,13 +12,18 @@ st.write("Mit dieser Anwendung koennen Einnahmen und Ausgaben erfasst und ausgew
 
 st.header("Neue Buchung erfassen")
 
-datum = st.date_input("Buchungsdatum")
-betrag = st.number_input("Betrag", min_value=0.0, step=1.0)
-kategorie = st.text_input("Kategorie")
-typ = st.selectbox("Buchungstyp", ["Einnahme", "Ausgabe"])
-beschreibung = st.text_input("Beschreibung")
+# Formular fuer neue Buchungen
+with st.form("buchung_formular", clear_on_submit=True):
+    datum = st.date_input("Buchungsdatum")
+    betrag = st.number_input("Betrag", min_value=0.0, step=1.0)
+    kategorie = st.text_input("Kategorie")
+    typ = st.selectbox("Buchungstyp", ["Einnahme", "Ausgabe"])
+    beschreibung = st.text_input("Beschreibung")
+
+    speichern = st.form_submit_button("Buchung speichern")
+
 # Neue Buchung an das Backend senden
-if st.button("Buchung speichern"):
+if speichern:
     if betrag <= 0:
         st.error("Der Betrag muss groesser als 0 sein.")
     elif kategorie == "":
@@ -40,6 +46,7 @@ if st.button("Buchung speichern"):
             st.error("Fehler beim Speichern der Buchung.")
 
 st.header("Gespeicherte Buchungen")
+
 # Gespeicherte Buchungen vom Backend laden
 antwort = requests.get(API_URL + "/buchungen")
 
@@ -101,6 +108,7 @@ else:
 
 st.subheader("Ausgaben nach Kategorie")
 
+# Kategorie-Auswertung vom Backend laden
 antwort_kategorien = requests.get(API_URL + "/auswertung/kategorien")
 
 if antwort_kategorien.status_code == 200:
